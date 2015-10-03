@@ -9,8 +9,9 @@ use Foobooks\Http\Controllers\Controller;
 class BooksController extends Controller
 {
     //
-    public function getIndex() 
+    public function getIndex($title = '') 
     {
-        return view('books.index');
+        $title = $title == '' ? '' : $title;
+        return view('books.index')-> withTitle($title);
     }
 }

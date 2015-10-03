@@ -19,4 +19,4 @@ Route::get('/practice', function() {
     echo App::environment();
 });
 
-Route::controllers(['books' => 'BooksController']);
+Route::controllers(['books/{title?}' => 'BooksController']);

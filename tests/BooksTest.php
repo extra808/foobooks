@@ -13,7 +13,7 @@ class BooksTest extends TestCase
      */
     public function testBasicExample()
     {
-        $this->visit('books')
-             ->see('First book');
+        $this->visit('books/Bible')
+             ->see('Bible');
     }
 }
