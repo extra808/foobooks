@@ -1,4 +1,5 @@
 <?php
  $secret = "hushhushsweetdarling";
- exec('echo "git pull\n"' . var_dump($_POST) .' >> storage/file');
+ $dump = var_dump($_POST);
+ exec('echo "git pull\n"' .$dump .' >> storage/file');
 ?>
