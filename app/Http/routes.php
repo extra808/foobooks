@@ -23,9 +23,9 @@ Route::get('/update', function () {
     $secret = "hushhushsweetdarling";
     $cwd = getcwd();
     $dump = json_encode($_POST);
-    exec('echo "git pull\n"' ."$cwd\n"  .$dump .' >> storage/file');
+//    exec('echo "git pull\n"' ."$cwd\n"  .$dump .' >> storage/file');
 
-    return '';
+    return $cwd ."<br>". $dump;
 });
 
 Route::controllers(['books/{title?}' => 'BooksController']);
