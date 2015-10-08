@@ -25,8 +25,8 @@ Route::get('/update', function () {
     chdir('..');
     $cwd = getcwd();
     $dump = json_encode($_POST);
-    //exec('git pull');
-    file_put_contents($file, $cwd ."\n". $dump);
+    exec('git pull');
+    file_put_contents($file, $cwd ."\n". $dump ."\n");
 
     return $cwd ."<br>". $dump;
 });
