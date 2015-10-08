@@ -1,6 +1,6 @@
 <?php
  $secret = "hushhushsweetdarling";
- $dump = var_dump($_POST);
+ $dump = json_encode($_POST);
 
  exec('echo "git pull\n"' .$dump .' >> storage/file');
 ?>
