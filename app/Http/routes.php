@@ -19,7 +19,7 @@ Route::get('/practice', function() {
     echo App::environment();
 });
 
-Route::get('/update', function () {
+Route::match(['get', 'post'], '/update', function () {
     $secret = "hushhushsweetdarling";
     $file = 'storage/file';
     chdir('..');
