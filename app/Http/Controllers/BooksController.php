@@ -11,7 +11,8 @@ class BooksController extends Controller
     //
     public function getIndex($title = '') 
     {
-        $title = $title == '' ? '' : $title;
-        return view('books.index')-> withTitle($title);
+        $books = new \Foobooks\Book();
+        $allBooks = $books->all();
+        return view('books.index')-> withBooks($allBooks);
     }
 }
