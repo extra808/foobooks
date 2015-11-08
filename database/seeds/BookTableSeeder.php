@@ -15,11 +15,12 @@ class BookTableSeeder extends Seeder
         // number of database records to create
         $numRows = 100;
         
+        // create Faker object
+        $faker = Faker::create(); 
+
         for ($i = 0; $i < $numRows; $i++) {
             // create model object
             $book = new \Foobooks\Book();
-            // create Faker object
-            $faker = Faker::create(); 
             $book->title = $faker->sentence($nbWords = 6);
             $book->author = $faker->name;
             $book->published = $faker->year('now');
