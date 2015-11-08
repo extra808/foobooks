@@ -3,6 +3,7 @@
 @section('content')
 <table>
 <tr>
+    <th>Delete</th>
     <th>Title</th>
     <th>Author</th>
     <th>Published</th>
@@ -10,21 +11,40 @@
     <th>Cover</th>
 </tr>
 
-    @foreach($books as $book)
+    @forelse($books as $book)
     <tr>
-        <th><a href="{{ $book->purchase_link }}">{{ $book->title }}</a></th>
-        <th>{{ $book->author }}</th>
-        <th>{{ $book->published }}</th>
-        <th>{{ $book->page_count }}</th>
-        <th><img src="{{ $book->cover }}"></th>
+        <td>
+        <form method="POST" action="/deleteBook">
+        {!! csrf_field() !!}
+        <label for="book{{ $book->id }}" class="sr-only">Delete {{ $book->title }}</label>
+        <input type="submit" name="Delete" value="Delete" id="book{{ $book->id }}">
+        </form>
+        </td>
+        <td><a href="{{ $book->purchase_link }}">{{ $book->title }}</a></td>
+        <td>{{ $book->author }}</td>
+        <td>{{ $book->published }}</td>
+        <td>{{ $book->page_count }}</td>
+        <td><img src="{{ $book->cover }}"></td>
     </tr>
-    @endforeach
+    @empty
+    <tr>
+        <td>
+        <form method="POST" action="/deleteBook">
+        {!! csrf_field() !!}
+        <label for="book{{ $book->id }}" class="sr-only">Delete {{ $book->title }}</label>
+        <input type="submit" name="Delete" value="Delete" id="book{{ $book->id }}">
+        </form>
+        </td>
+        <td><a href="{{ $book->purchase_link }}">{{ $book->title }}</a></td>
+        <td>{{ $book->author }}</td>
+        <td>{{ $book->published }}</td>
+        <td>{{ $book->page_count }}</td>
+        <td><img src="{{ $book->cover }}"></td>
+    </tr>
+    @endforelse
 </table>
 @endsection
 
 @section('equalSide')
-<ol>
-    <li>No Author
-    <li>Herman Melville
-</ol>
+
 @endsection
