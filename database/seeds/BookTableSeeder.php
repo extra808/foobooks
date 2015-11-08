@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Faker\Factory as Faker;
 
 class BookTableSeeder extends Seeder
 {
@@ -11,15 +12,23 @@ class BookTableSeeder extends Seeder
      */
     public function run()
     {
-        //
-        $book = new \Foobooks\Book();
-        $book->title = 'Harry Potter';
-        $book->author = 'JK Rowling';
-        $book->published = 1999;
-        $book->cover = 'http://p1.dwa15.cognize.org/photos/curtis-holding-macaw_sm.jpg';
-        $book->purchase_link = 'http://p1.dwa15.cognize.org/';
-        $book->page_count = 432;
-        $book->save(); // insert new book in table
+        // number of database records to create
+        $numRows = 100;
+        
+        for ($i = 0; $i < $numRows; $i++) {
+            // create model object
+            $book = new \Foobooks\Book();
+            // create Faker object
+            $faker = Faker::create(); 
+            $book->title = $faker->sentence($nbWords = 6);
+            $book->author = $faker->name;
+            $book->published = $faker->year('now');
+            $book->cover = $faker->imageUrl(640, 480, 'cats');
+            $book->purchase_link = $faker->url;
+            $book->page_count = $faker->numberBetween(101,1999);
+
+            $book->save(); // insert new book in table
+        }
 
     }
 }
